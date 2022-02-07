@@ -1,16 +1,27 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__next {
+    height: 100vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.button {
+    @apply h-11 border border-gray-400 text-gray-400 rounded-full mr-5 px-5 transition-all hover:text-white hover:bg-green-600 disabled:text-gray-400 hover:border-none disabled:border-gray-400 disabled:bg-transparent disabled:border-solid disabled:cursor-not-allowed;
+}
+.correct-btn {
+    @apply text-white bg-emerald-500 border-none hover:bg-emerald-600;
+}
+.invalid-btn {
+    @apply border-none bg-red-300 text-white hover:bg-red-400 hover:text-white;
 }
 
-* {
-  box-sizing: border-box;
+input[type='password'] ~ svg[data-icon='eye'],
+input[type='password'] ~ svg[data-icon='unlock'] {
+    display: none;
+}
+
+input[type='text'] ~ svg[data-icon='eye-slash'],
+input[type='text'] ~ svg[data-icon='lock'] {
+    display: none;
 }
