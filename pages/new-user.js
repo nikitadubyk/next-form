@@ -1,9 +1,11 @@
-const newUser = () => {
+import UserForm from '../components/new-user-form/UserForm'
+
+const NewUser = () => {
     return (
-        <div>
-            <h1>New User Page</h1>
-        </div>
+        <>
+            <UserForm />
+        </>
     )
 }
 
-export default newUser
+export default NewUser

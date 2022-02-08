@@ -4,7 +4,7 @@ export default function Document() {
     return (
         <Html lang='en' className='md:text-xl'>
             <Head />
-            <body className='h-screen'>
+            <body>
                 <Main />
                 <NextScript />
             </body>
