@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const PasswordInput = () => {
+const PasswordInput = ({ onChangePassword, passwordValue }) => {
     const [showPassword, setShowPassword] = useState(false)
     return (
         <>
@@ -12,6 +12,8 @@ const PasswordInput = () => {
                 maxLength='16'
                 placeholder='Password'
                 className='row-start-2 col-span-full outline-none border-b-2 px-12 py-3 w-full transition-all border-gray-300 invalid:border-red-500 valid:border-emerald-500 placeholder-shown:invalid:border-gray-300'
+                onChange={e => onChangePassword(e.target.value)}
+                value={passwordValue}
             />
 
             <svg

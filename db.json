@@ -1,0 +1,29 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "test@mail.ru",
+            "password": "1234444"
+        },
+        {
+            "id": 2,
+            "email": "testtwo@gmail.com",
+            "password": "123412341234"
+        },
+        {
+            "id": "eb2cbce1-d8c1-4d29-9c5b-59ca7fa6192f",
+            "email": "twtasdtasdt@mail.ru",
+            "password": "12341234"
+        },
+        {
+            "id": "404c4663-7f7c-4364-96d5-355d54addcab",
+            "email": "test@mail.ru",
+            "password": "12341234"
+        },
+        {
+            "id": "b87497af-adc1-43a8-9530-5c0a50ec6970",
+            "email": "adsfasdf@gmail.com",
+            "password": "123412341234"
+        }
+    ]
+}

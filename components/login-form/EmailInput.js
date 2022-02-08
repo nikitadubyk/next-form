@@ -1,4 +1,4 @@
-const EmailInput = () => {
+const EmailInput = ({ onChangeEmail, emailValue }) => {
     return (
         <>
             <input
@@ -7,6 +7,8 @@ const EmailInput = () => {
                 required
                 placeholder='Email address'
                 className='peer row-start-1 col-span-full outline-none border-b-2 border-gray-300 px-12 py-3 w-full transition-all invalid:border-red-500 valid:border-emerald-500 placeholder-shown:invalid:border-gray-300'
+                onChange={e => onChangeEmail(e.target.value)}
+                value={emailValue}
             />
             <svg
                 aria-hidden='true'
@@ -35,7 +37,7 @@ const EmailInput = () => {
                     <polygon
                         style={{ fill: '#41ad49' }}
                         className='st0'
-                        points='434.8,49 174.2,309.7 76.8,212.3 0,289.2 174.1,463.3 196.6,440.9 196.6,440.9 511.7,125.8 434.8,49     '
+                        points='434.8,49 174.2,309.7 76.8,212.3 0,289.2 174.1,463.3 196.6,440.9 196.6,440.9 511.7,125.8 434.8,49'
                     />
                 </g>
             </svg>
