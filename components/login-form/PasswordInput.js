@@ -6,6 +6,7 @@ const PasswordInput = ({ onChangePassword, passwordValue }) => {
         <>
             <input
                 type={showPassword ? 'text' : 'password'}
+                data-password
                 name='password'
                 required
                 minLength='5'

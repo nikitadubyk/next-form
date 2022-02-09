@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+input[data-user-input]:focus ~ svg[data-icon='user'] {
+    @apply opacity-100;
+}
+
 input[type='password']:focus ~ svg[data-icon='lock'],
-input[type='text']:focus ~ svg[data-icon='unlock'] {
+input[data-password]:focus ~ svg[data-icon='unlock'] {
     @apply opacity-100;
 }
 

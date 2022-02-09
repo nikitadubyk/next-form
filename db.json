@@ -1,29 +1,22 @@
 {
     "users": [
         {
-            "id": 1,
+            "id": "9e86dfe2-dfb5-41be-a6f8-80f5011ef68c",
             "email": "test@mail.ru",
-            "password": "1234444"
+            "password": "owtckqojnb",
+            "userName": "testName1"
         },
         {
-            "id": 2,
-            "email": "testtwo@gmail.com",
-            "password": "123412341234"
+            "id": "c2eeec5f-d17c-42ea-b675-49527a574bd0",
+            "email": "test@gmail.com",
+            "password": "hzix0b4rld",
+            "userName": "testName2"
         },
         {
-            "id": "eb2cbce1-d8c1-4d29-9c5b-59ca7fa6192f",
-            "email": "twtasdtasdt@mail.ru",
-            "password": "12341234"
-        },
-        {
-            "id": "404c4663-7f7c-4364-96d5-355d54addcab",
-            "email": "test@mail.ru",
-            "password": "12341234"
-        },
-        {
-            "id": "b87497af-adc1-43a8-9530-5c0a50ec6970",
-            "email": "adsfasdf@gmail.com",
-            "password": "123412341234"
+            "id": "d2aaec85-e943-476e-945e-77107c5ccec1",
+            "email": "test2@mail.ru",
+            "password": "123412341234",
+            "userName": "testTwo"
         }
     ]
 }
