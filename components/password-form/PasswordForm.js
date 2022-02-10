@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getData, patchData } from '../../pages/api/services'
+import { getData, patchData } from '../../services/services'
 import Logo from '../login-form/Logo'
 import Form from '../login-form/Form'
 import EmailInput from '../login-form/EmailInput'
@@ -18,17 +18,20 @@ const PasswordForm = () => {
         return Math.random().toString(36).slice(len)
     }
 
+    const changePassword = id => {
+        const newPassword = generationPassword(10)
+        setNewPassword(newPassword)
+
+        patchData('/api/users', id, {
+            password: newPassword,
+        })
+    }
+
     const isRegisteredUser = users => {
         const isUserInArray = users.filter(user => user.email === emailValue)
         if (isUserInArray.length > 0) {
             setIsRegistered('correct email')
-
-            const newPassword = generationPassword(10)
-            setNewPassword(newPassword)
-
-            patchData('http://localhost:4000/users', isUserInArray[0].id, {
-                password: newPassword,
-            })
+            changePassword(isUserInArray[0].id)
         } else {
             setIsRegistered('wrong email')
         }
@@ -36,9 +39,7 @@ const PasswordForm = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        getData('http://localhost:4000/users').then(data =>
-            isRegisteredUser(data)
-        )
+        getData('/api/users').then(data => isRegisteredUser(data))
     }
 
     const errorMessage = isRegistered === 'wrong email' && (

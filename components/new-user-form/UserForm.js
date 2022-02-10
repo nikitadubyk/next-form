@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { postData } from '../../pages/api/services'
+import { postData } from '../../services/services'
 import { v4 as uuidv4 } from 'uuid'
 import Form from '../login-form/Form'
 import Logo from '../login-form/Logo'
@@ -35,7 +35,7 @@ const UserForm = () => {
             userName: userName,
         }
 
-        postData(`http://localhost:4000/users`, data)
+        postData('/api/users', data)
             .then(res => setCreatedAccount(true))
             .catch(e => setError(true))
 

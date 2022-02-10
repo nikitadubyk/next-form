@@ -15,16 +15,16 @@ export const getData = async function (url) {
     return await res.json()
 }
 
-export const deleteData = async function (url, id) {
-    const res = await fetch(url + '/' + id, {
+export const deleteData = async function (url, userId) {
+    const res = await fetch(url + '/' + userId, {
         method: 'DELETE',
     })
 
     return await res.json()
 }
 
-export const patchData = async function (url, id, data) {
-    const res = await fetch(url + '/' + id, {
+export const patchData = async function (url, userId, data) {
+    const res = await fetch(url + '/' + userId, {
         method: 'PATCH',
         body: JSON.stringify(data),
         headers: {
@@ -32,5 +32,5 @@ export const patchData = async function (url, id, data) {
         },
     })
 
-    return await res
+    return await res.json()
 }
