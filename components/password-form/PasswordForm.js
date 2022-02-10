@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { getData, patchData } from '../../services/services'
+import useInputsValues from '../../hooks/useInputsValues'
 import Logo from '../login-form/Logo'
 import Form from '../login-form/Form'
 import EmailInput from '../login-form/EmailInput'
@@ -7,11 +8,9 @@ import Button from '../login-form/Button'
 import LinkToHomePage from './LinkToHomePage'
 
 const PasswordForm = () => {
-    const [emailValue, setEmailValue] = useState('')
+    const { emailValue, changeEmailValue } = useInputsValues()
     const [isRegistered, setIsRegistered] = useState('')
     const [newPassword, setNewPassword] = useState('')
-
-    const changeEmailValue = value => setEmailValue(value)
 
     const generationPassword = len => {
         len = len * -1

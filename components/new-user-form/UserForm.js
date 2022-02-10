@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { postData } from '../../services/services'
 import { v4 as uuidv4 } from 'uuid'
+import useInputsValues from '../../hooks/useInputsValues'
 import Form from '../login-form/Form'
 import Logo from '../login-form/Logo'
 import Button from '../login-form/Button'
@@ -10,15 +11,20 @@ import PasswordInput from '../login-form/PasswordInput'
 import LinkToHomePage from '../password-form/LinkToHomePage'
 
 const UserForm = () => {
-    const [emailValue, setEmailValue] = useState('')
-    const [passwordValue, setPasswordValue] = useState('')
-    const [userName, setUserName] = useState('')
+    const {
+        emailValue,
+        passwordValue,
+        userName,
+        setEmailValue,
+        setPasswordValue,
+        setUserName,
+        changeEmailValue,
+        changePasswordValue,
+        changeUserName,
+    } = useInputsValues()
+
     const [error, setError] = useState(false)
     const [createdAccount, setCreatedAccount] = useState(false)
-
-    const changeEmailValue = value => setEmailValue(value)
-    const changePasswordValue = value => setPasswordValue(value)
-    const changeUserName = value => setUserName(value)
 
     const cleanState = () => {
         setCreatedAccount(false)

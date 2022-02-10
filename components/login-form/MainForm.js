@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useInputsValues from '../../hooks/useInputsValues'
 import Form from './Form'
 import Link from 'next/link'
 import EmailInput from './EmailInput'
@@ -6,11 +7,8 @@ import PasswordInput from './PasswordInput'
 import Button from './Button'
 
 const MainForm = () => {
-    const [emailValue, setEmailValue] = useState('')
-    const [passwordValue, setPasswordValue] = useState('')
-
-    const changeEmailValue = value => setEmailValue(value)
-    const changePasswordValue = value => setPasswordValue(value)
+    const { emailValue, changeEmailValue, passwordValue, changePasswordValue } =
+        useInputsValues()
 
     const onSubmit = e => {
         e.preventDefault()
