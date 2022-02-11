@@ -1,20 +1,16 @@
 export const users = [
     {
-        id: '3afcedc9-1398-4d7a-b0cd-eee1797cc986',
+        id: '2787cf0c-5b20-4580-aacf-6d4bca0fa73d',
         email: 'test@mail.ru',
-        password: 'ro2ac1xvlk',
-        userName: '3412341234',
+        password:
+            '$2b$04$JKp9XELQdJwR5qTZyzyp6ucq1GmUKMruKHChf9RlO11knmO3/JwK6',
+        userName: 'Testtest',
     },
     {
-        id: '9c8ad582-261b-4db2-bf91-bc58022b8f10',
-        email: 'test@gmail.com',
-        password: 'gz1w74vty8',
-        userName: 'testtest',
-    },
-    {
-        id: '0e03be1e-4ccd-470a-8939-e23f1bdd31e3',
-        email: 'test2@gmail.com',
-        password: 'u4ewi1gu2j',
-        userName: 'testtest2',
+        id: '0f256bdd-e338-4e73-86ab-fdee43436dbb',
+        email: 'nikita_dubyk@mail.ru',
+        password:
+            '$2b$04$p6b1zSgzLKFvimNkkVDrKOhj.4a3WXspbBLsQ/NsMFCCMqNh.6rga',
+        userName: 'Nikita',
     },
 ]

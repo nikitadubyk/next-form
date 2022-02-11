@@ -15,6 +15,23 @@ export const getData = async function (url) {
     return await res.json()
 }
 
+export const getUserByEmail = async function (url, userEmail) {
+    const res = await fetch(url + '/' + userEmail)
+    return await res.json()
+}
+
+export const login = async function (url, userEmail, data) {
+    const res = await fetch(url + '/' + userEmail, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-type': 'application/json; charset=utf-8',
+        },
+    })
+
+    return await res.json()
+}
+
 export const deleteData = async function (url, userId) {
     const res = await fetch(url + '/' + userId, {
         method: 'DELETE',
