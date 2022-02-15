@@ -27,7 +27,7 @@ const PasswordForm = () => {
 
     const onSubmit = async e => {
         e.preventDefault()
-        await getUserByEmail('/api/users/login', emailValue)
+        await getUserByEmail('/api/users/email', emailValue)
             .then(res => {
                 setIsRegistered('correct email')
                 changePassword(res.id)

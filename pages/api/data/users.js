@@ -7,10 +7,10 @@ export const users = [
         userName: 'Testtest',
     },
     {
-        id: '0f256bdd-e338-4e73-86ab-fdee43436dbb',
+        id: 'b902d5cd-9dfb-44fa-8728-6cf1b88d73a1',
         email: 'nikita_dubyk@mail.ru',
         password:
-            '$2b$04$p6b1zSgzLKFvimNkkVDrKOhj.4a3WXspbBLsQ/NsMFCCMqNh.6rga',
+            '$2a$05$TLslsICSkdrCklgFd7EiROjcX.X/Ugfy1imwch5fyqQ0inZSEqxZa',
         userName: 'Nikita',
     },
 ]

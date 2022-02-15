@@ -1,4 +1,6 @@
 import useInputsValues from '../../hooks/useInputsValues'
+import { authUser } from '../../lib/auth'
+import { loginUser } from '../../services/requests'
 import Head from 'next/head'
 import Logo from './Logo'
 import Form from './Form'
@@ -7,14 +9,14 @@ import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
 import Button from './Button'
 import Footer from './Footer'
-import Dashboard from '../dashboard/Dashboard'
 
 const MainForm = () => {
     const { emailValue, changeEmailValue, passwordValue, changePasswordValue } =
         useInputsValues()
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
+        await loginUser(emailValue, passwordValue).then(authUser)
     }
 
     return (

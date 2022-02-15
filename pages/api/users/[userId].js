@@ -1,6 +1,6 @@
 import { users } from '../data/users'
 import { changeUsersDatabase } from '../users'
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 export default function handler(req, res) {
     if (req.method === 'GET') {
@@ -18,7 +18,7 @@ export default function handler(req, res) {
         const { userId } = req.query
         const data = req.body
 
-        const hash = bcrypt.hashSync(data.password, 3)
+        const hash = bcrypt.hashSync(data.password, 5)
 
         const patchUser = users.filter(user => user.id === userId)
         patchUser[0].password = hash

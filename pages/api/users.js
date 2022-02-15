@@ -1,5 +1,5 @@
 import { users } from './data/users.js'
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const fs = require('fs')
 
 export function changeUsersDatabase(data) {
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         res.status(200).json(users)
     } else if (req.method === 'POST') {
         const user = req.body
-        const hash = bcrypt.hashSync(user.password, 3)
+        const hash = bcrypt.hashSync(user.password, 5)
         user.password = hash
         users.push(user)
         changeUsersDatabase(users)
