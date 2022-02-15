@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             console.log('Правильный пароль')
             const token = jwt.sign(
                 {id: user.id},
-                'secret',
+                'secret_key',
                 { expiresIn: '1h' }
             )
 
