@@ -1,6 +1,5 @@
+import { useState } from 'react'
 import useInputsValues from '../../hooks/useInputsValues'
-import { authUser } from '../../lib/auth'
-import { loginUser } from '../../services/requests'
 import Head from 'next/head'
 import Logo from './Logo'
 import Form from './Form'
@@ -9,14 +8,42 @@ import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
 import Button from './Button'
 import Footer from './Footer'
+import Router from 'next/router'
 
 const MainForm = () => {
-    const { emailValue, changeEmailValue, passwordValue, changePasswordValue } =
-        useInputsValues()
+    const {
+        emailValue,
+        changeEmailValue,
+        passwordValue,
+        setPasswordValue,
+        changePasswordValue,
+    } = useInputsValues()
+    const [errorMessage, setErrorMessage] = useState('')
 
     const onSubmit = async e => {
         e.preventDefault()
-        await loginUser(emailValue, passwordValue).then(authUser)
+
+        try {
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json; charset=utf-8' },
+                body: JSON.stringify({
+                    email: emailValue,
+                    password: passwordValue,
+                }),
+            })
+
+            if (res.status === 200) {
+                Router.push('/dashboard')
+            } else {
+                const req = await res.json()
+                req.errorMessage === 'Wrong email' && setPasswordValue('')
+                setErrorMessage(req.errorMessage)
+            }
+        } catch (error) {
+            console.log(error.message)
+            setErrorMessage(error.message)
+        }
     }
 
     return (
@@ -29,16 +56,20 @@ const MainForm = () => {
                     <Logo className='mt-10' />
                     <div className='mt-10 sm:w-7/12 sm:mx-auto lg:w-5/12 lg:mt-16'>
                         <h2 className='text-3xl font-medium px-5 lg:text-4xl xl:text-5xl'>
-                            Welcome
+                            {errorMessage ? errorMessage : 'Welcome'}
                         </h2>
                         <Form onSubmit={onSubmit}>
                             <EmailInput
                                 onChangeEmail={changeEmailValue}
                                 emailValue={emailValue}
+                                isError={errorMessage === 'Wrong email' && true}
                             />
                             <PasswordInput
                                 onChangePassword={changePasswordValue}
                                 passwordValue={passwordValue}
+                                isError={
+                                    errorMessage === 'Wrong password' && true
+                                }
                             />
 
                             <Link href='/forgot-password'>
@@ -64,8 +95,11 @@ const MainForm = () => {
                                 </a>
                             </Link>
 
-                            <Button className='col-span-2 justify-self-end mr-5'>
-                                Log in
+                            <Button
+                                className='col-span-2 justify-self-end mr-5'
+                                isError={errorMessage && true}
+                            >
+                                {errorMessage ? 'Retry' : 'Log in'}
                             </Button>
                         </Form>
                     </div>

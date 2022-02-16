@@ -1,7 +1,8 @@
-const EmailInput = ({ onChangeEmail, emailValue }) => {
+const EmailInput = ({ onChangeEmail, emailValue, isError = null }) => {
     return (
         <>
             <input
+                style={isError ? { borderColor: 'red' } : {}}
                 type='email'
                 name='email'
                 required
@@ -24,6 +25,7 @@ const EmailInput = ({ onChangeEmail, emailValue }) => {
             </svg>
 
             <svg
+                style={isError ? { visibility: 'hidden' } : {}}
                 version='1.1'
                 viewBox='0 0 512 512'
                 xmlns='http://www.w3.org/2000/svg'
@@ -44,7 +46,10 @@ const EmailInput = ({ onChangeEmail, emailValue }) => {
                 xmlns='http://www.w3.org/2000/svg'
                 xmlnsXlink='http://www.w3.org/1999/xlink'
                 viewBox='0 0 28 28'
-                style={{ enableBackground: 'new 0 0 28 28' }}
+                style={
+                    ({ enableBackground: 'new 0 0 28 28' },
+                    isError ? { visibility: 'visible' } : { visibility: '' })
+                }
                 className='w-5 h-5 row-start-1 col-start-4 justify-self-end invisible peer-invalid:visible peer-placeholder-shown:peer-invalid:invisible mr-5'
             >
                 <g>

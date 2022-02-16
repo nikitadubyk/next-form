@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Logo from '../login-form/Logo'
 import Button from '../login-form/Button'
 import { useEffect, useState } from 'react'
-import { getUserByEmail } from '../../services/requests'
 import { logout } from '../../lib/auth'
 import Router from 'next/router'
 
@@ -11,15 +10,15 @@ const Dashboard = () => {
 
     useEffect(() => {
         async function fetchUserInfo() {
-            const userInfo = JSON.parse(localStorage.getItem('userId'))
+            const res = await fetch('/api/userInfo')
 
-            if (userInfo == undefined || Date.now() > userInfo.exp * 1000) {
-                return Router.push('/')
+            if (res.status === 200) {
+                const json = await res.json()
+                setUser(json)
+            } else {
+                Router.push('/')
             }
-
-            await getUserByEmail('/api/users/', userInfo.id).then(setUser)
         }
-
         fetchUserInfo()
     }, [])
 
@@ -36,7 +35,9 @@ const Dashboard = () => {
                 <h2 className='text-lg lg:text-xl xl:text-2xl mt-3'>
                     Your email is {user.email}
                 </h2>
-                <Button className='mt-5' onClick={logout}>Log Out</Button>
+                <Button className='mt-5' onClick={logout}>
+                    Log Out
+                </Button>
             </div>
         </>
     )

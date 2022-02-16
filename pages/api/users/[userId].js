@@ -1,5 +1,5 @@
 import { users } from '../data/users'
-import { changeUsersDatabase } from '../users'
+import { changeUsersDatabase } from '../../../lib/changeUsersDatabase'
 const bcrypt = require('bcryptjs')
 
 export default function handler(req, res) {
@@ -7,13 +7,6 @@ export default function handler(req, res) {
         const { userId } = req.query
         const user = users.find(user => user.id === userId)
         res.status(200).json(user)
-    } else if (req.method === 'DELETE') {
-        const { userId } = req.query
-
-        const deleteUser = users.filter(user => user.id !== userId)
-        changeUsersDatabase(deleteUser)
-
-        res.status(200).json(deleteUser)
     } else if (req.method === 'PATCH') {
         const { userId } = req.query
         const data = req.body

@@ -1,10 +1,12 @@
 import { useState } from 'react'
 
-const PasswordInput = ({ onChangePassword, passwordValue }) => {
+const PasswordInput = ({ onChangePassword, passwordValue, isError = null }) => {
     const [showPassword, setShowPassword] = useState(false)
+
     return (
         <>
             <input
+                style={isError ? { borderColor: 'red' } : {}}
                 type={showPassword ? 'text' : 'password'}
                 data-password
                 name='password'
