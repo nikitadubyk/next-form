@@ -6,7 +6,10 @@ import { logout } from '../../lib/auth'
 import Router from 'next/router'
 
 const Dashboard = () => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({
+        userName: '',
+        email: '',
+    })
 
     useEffect(() => {
         async function fetchUserInfo() {

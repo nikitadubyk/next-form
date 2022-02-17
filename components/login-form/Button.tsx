@@ -1,9 +1,11 @@
-const Button = ({
-    children,
-    className,
-    onClick = () => {},
-    isError = null,
-}) => {
+interface IButtonProps {
+    children: any
+    className: string
+    onClick?: () => {}
+    isError?: boolean
+}
+
+const Button = ({ children, className, onClick, isError }: IButtonProps) => {
     return (
         <button
             style={

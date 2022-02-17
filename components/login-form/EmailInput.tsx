@@ -1,4 +1,14 @@
-const EmailInput = ({ onChangeEmail, emailValue, isError = null }) => {
+interface IEmailInputProps {
+    onChangeEmail: Function
+    emailValue: string
+    isError?: boolean
+}
+
+const EmailInput = ({
+    onChangeEmail,
+    emailValue,
+    isError,
+}: IEmailInputProps) => {
     return (
         <>
             <input
@@ -46,10 +56,7 @@ const EmailInput = ({ onChangeEmail, emailValue, isError = null }) => {
                 xmlns='http://www.w3.org/2000/svg'
                 xmlnsXlink='http://www.w3.org/1999/xlink'
                 viewBox='0 0 28 28'
-                style={
-                    ({ enableBackground: 'new 0 0 28 28' },
-                    isError ? { visibility: 'visible' } : { visibility: '' })
-                }
+                style={isError ? { visibility: 'visible' } : {}}
                 className='w-5 h-5 row-start-1 col-start-4 justify-self-end invisible peer-invalid:visible peer-placeholder-shown:peer-invalid:invisible mr-5'
             >
                 <g>

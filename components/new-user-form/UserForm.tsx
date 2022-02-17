@@ -32,10 +32,14 @@ const UserForm = () => {
         setError(false)
     }
 
+    type Data = {
+        [key: string]: string
+    }
+
     const onSubmit = e => {
         e.preventDefault()
         cleanState()
-        const data = {
+        const data: Data = {
             id: uuidv4(),
             email: emailValue,
             password: passwordValue,

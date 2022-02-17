@@ -13,12 +13,12 @@ const PasswordForm = () => {
     const [isRegistered, setIsRegistered] = useState('')
     const [newPassword, setNewPassword] = useState('')
 
-    const generationPassword = len => {
+    const generationPassword = (len: number): string => {
         len = len * -1
         return Math.random().toString(36).slice(len)
     }
 
-    const changePassword = userId => {
+    const changePassword = (userId: string) => {
         const newPassword = generationPassword(10)
         setNewPassword(newPassword)
 

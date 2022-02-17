@@ -1,8 +1,8 @@
 import Router from 'next/router'
-import { getTokenCookie, MAX_AGE, setTokenCookie } from './auth-cookies'
+import { getTokenCookie, setTokenCookie, MAX_AGE } from './auth-cookies'
 import Iron from '@hapi/iron'
 
-const TOKEN_SECRET = process.env.TOKEN_SECRET
+const TOKEN_SECRET: string = process.env.TOKEN_SECRET
 
 export const logout = async () => {
     const res = await fetch('/api/logout')
@@ -11,7 +11,7 @@ export const logout = async () => {
     }
 }
 
-export async function setLoginSession(res, userId) {
+export async function setLoginSession(res, userId: string) {
     const createdAt = Date.now()
     const obj = { id: userId, createdAt, maxAge: MAX_AGE }
 
@@ -26,7 +26,7 @@ export async function getLoginSession(req) {
     if (!token) return
 
     const session = await Iron.unseal(token, TOKEN_SECRET, Iron.defaults)
-    const expiresAt = session.createdAt + session.maxAge * 1000
+    const expiresAt: number = session.createdAt + session.maxAge * 1000
 
     if (Date.now() > expiresAt) {
         throw new Error('Session expired')

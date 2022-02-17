@@ -1,8 +1,9 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { users } from '../data/users'
 import { changeUsersDatabase } from '../../../lib/changeUsersDatabase'
 const bcrypt = require('bcryptjs')
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'GET') {
         const { userId } = req.query
         const user = users.find(user => user.id === userId)

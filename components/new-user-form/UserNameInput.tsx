@@ -1,6 +1,14 @@
 import React from 'react'
 
-const UserNameInput = ({ onChangeUserName, userNameValue }) => {
+interface IUserNameInputProps {
+    onChangeUserName: Function
+    userNameValue: string
+}
+
+const UserNameInput = ({
+    onChangeUserName,
+    userNameValue,
+}: IUserNameInputProps) => {
     return (
         <>
             <input
@@ -8,8 +16,8 @@ const UserNameInput = ({ onChangeUserName, userNameValue }) => {
                 name='user'
                 data-user-input
                 required
-                minLength='6'
-                maxLength='12'
+                minLength={6}
+                maxLength={12}
                 placeholder='User name'
                 className='row-start-3 col-span-full outline-none border-b-2 border-gray-300 px-12 py-3 w-full transition-all invalid:border-red-500 valid:border-emerald-500 placeholder-shown:invalid:border-gray-300'
                 onChange={e => onChangeUserName(e.target.value)}

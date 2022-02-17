@@ -20,17 +20,24 @@ const MainForm = () => {
     } = useInputsValues()
     const [errorMessage, setErrorMessage] = useState('')
 
+    type Data = {
+        email: string
+        password: string
+    }
+
     const onSubmit = async e => {
         e.preventDefault()
+
+        const body: Data = {
+            email: emailValue,
+            password: passwordValue,
+        }
 
         try {
             const res = await fetch('/api/login', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json; charset=utf-8' },
-                body: JSON.stringify({
-                    email: emailValue,
-                    password: passwordValue,
-                }),
+                body: JSON.stringify(body),
             })
 
             if (res.status === 200) {
@@ -40,7 +47,7 @@ const MainForm = () => {
                 req.errorMessage === 'Wrong email' && setPasswordValue('')
                 setErrorMessage(req.errorMessage)
             }
-        } catch (error) {
+        } catch (error: any) {
             console.log(error.message)
             setErrorMessage(error.message)
         }

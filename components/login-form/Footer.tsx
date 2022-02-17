@@ -6,7 +6,6 @@ const Footer = () => {
             <div className='flex justify-between py-3 px-5 lg:px-3 xl:px-0'>
                 <div className='group rounded-full p-1 bg-white cursor-pointer items-center justify-center w-6 shadow-xl lg:shadow-none'>
                     <svg
-                        tabIndex='0'
                         aria-hidden='true'
                         focusable='false'
                         data-prefix='fas'

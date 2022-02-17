@@ -1,6 +1,16 @@
 import { useState } from 'react'
 
-const PasswordInput = ({ onChangePassword, passwordValue, isError = null }) => {
+interface IPasswordInputProps {
+    onChangePassword: Function
+    passwordValue: string
+    isError?: boolean
+}
+
+const PasswordInput = ({
+    onChangePassword,
+    passwordValue,
+    isError,
+}: IPasswordInputProps) => {
     const [showPassword, setShowPassword] = useState(false)
 
     return (
@@ -11,8 +21,8 @@ const PasswordInput = ({ onChangePassword, passwordValue, isError = null }) => {
                 data-password
                 name='password'
                 required
-                minLength='5'
-                maxLength='16'
+                minLength={5}
+                maxLength={16}
                 placeholder='Password'
                 className='row-start-2 col-span-full outline-none border-b-2 px-12 py-3 w-full transition-all border-gray-300 invalid:border-red-500 valid:border-emerald-500 placeholder-shown:invalid:border-gray-300'
                 onChange={e => onChangePassword(e.target.value)}
@@ -52,7 +62,7 @@ const PasswordInput = ({ onChangePassword, passwordValue, isError = null }) => {
             </svg>
 
             <svg
-                tabIndex='0'
+                tabIndex={0}
                 aria-hidden='true'
                 focusable='false'
                 data-prefix='far'
@@ -70,7 +80,7 @@ const PasswordInput = ({ onChangePassword, passwordValue, isError = null }) => {
             </svg>
 
             <svg
-                tabIndex='0'
+                tabIndex={0}
                 aria-hidden='true'
                 focusable='false'
                 data-prefix='far'
