@@ -33,6 +33,8 @@ const MainForm = () => {
             password: passwordValue,
         }
 
+        console.log('BODY IN MAINFORM', body)
+
         try {
             const res = await fetch('/api/login', {
                 method: 'POST',

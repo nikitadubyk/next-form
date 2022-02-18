@@ -17,6 +17,7 @@ const Dashboard = () => {
 
             if (res.status === 200) {
                 const json = await res.json()
+                console.log(json)
                 setUser(json)
             } else {
                 Router.push('/')

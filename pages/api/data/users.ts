@@ -1,16 +1,20 @@
-export const users = [
-    {
-        id: '2787cf0c-5b20-4580-aacf-6d4bca0fa73d',
-        email: 'test@mail.ru',
-        password:
-            '$2b$04$JKp9XELQdJwR5qTZyzyp6ucq1GmUKMruKHChf9RlO11knmO3/JwK6',
-        userName: 'Testtest',
-    },
-    {
-        id: 'b902d5cd-9dfb-44fa-8728-6cf1b88d73a1',
-        email: 'nikita_dubyk@mail.ru',
-        password:
-            '$2a$05$TLslsICSkdrCklgFd7EiROjcX.X/Ugfy1imwch5fyqQ0inZSEqxZa',
-        userName: 'Nikita',
-    },
-]
+const bcrypt = require('bcryptjs')
+
+const users = []
+
+export const createUser = async userData => {
+    const user = userData
+    const hash = bcrypt.hashSync(user.password, 5)
+
+    user.password = hash
+    users.push(user)
+
+    console.log('Users.ts DATA', users)
+    return { user }
+}
+
+export const findUser = userEmail => {
+    const user = users.find(user => user.email === userEmail)
+    console.log(`Users in findUser:${users}`, `User in findUser:${user}`)
+    return user
+}

@@ -11,9 +11,9 @@ export const logout = async () => {
     }
 }
 
-export async function setLoginSession(res, userId: string) {
+export async function setLoginSession(res, userData: object) {
     const createdAt = Date.now()
-    const obj = { id: userId, createdAt, maxAge: MAX_AGE }
+    const obj = { userData, createdAt, maxAge: MAX_AGE }
 
     const token = await Iron.seal(obj, TOKEN_SECRET, Iron.defaults)
 

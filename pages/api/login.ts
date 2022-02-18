@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { users } from './data/users'
+// import { users } from './data/users'
+import { findUser } from './data/users'
 import { setLoginSession } from '../../lib/auth'
 const bcrypt = require('bcryptjs')
 
@@ -9,7 +10,12 @@ export default async function handler(
 ) {
     if (req.method === 'POST') {
         const { password, email } = req.body
-        const user = users.find(user => user.email === email)
+        console.log(password, email)
+        // const user = users.find(user => user.email === email)
+        const user = findUser(email)
+
+        console.log(`USER IN LOGIN: ${user}`)
+
         let result
         if (user) result = bcrypt.compareSync(password, user.password)
 
@@ -18,7 +24,11 @@ export default async function handler(
         } else if (user.email === email && !result) {
             res.status(401).json({ errorMessage: 'Wrong password' })
         } else if (user.email === email && result) {
-            await setLoginSession(res, user.id)
+            const userData = {
+                email: user.email,
+                userName: user.userName,
+            }
+            await setLoginSession(res, userData)
             res.status(200).json({})
         }
     }
