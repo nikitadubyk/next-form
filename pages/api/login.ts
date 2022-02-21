@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-// import { users } from './data/users'
-import { findUser } from './data/users'
+import { findUserByEmail } from './data/users'
 import { setLoginSession } from '../../lib/auth'
 const bcrypt = require('bcryptjs')
 
@@ -10,11 +9,7 @@ export default async function handler(
 ) {
     if (req.method === 'POST') {
         const { password, email } = req.body
-        console.log(password, email)
-        // const user = users.find(user => user.email === email)
-        const user = findUser(email)
-
-        console.log(`USER IN LOGIN: ${user}`)
+        const user = findUserByEmail(email)
 
         let result
         if (user) result = bcrypt.compareSync(password, user.password)

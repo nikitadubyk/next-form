@@ -1,20 +1,22 @@
 const bcrypt = require('bcryptjs')
 
-const users = []
+const users = Symbol.for('users')
+global[users] = global[users] || []
 
 export const createUser = async userData => {
     const user = userData
     const hash = bcrypt.hashSync(user.password, 5)
 
     user.password = hash
-    users.push(user)
+    global[users].push(user)
 
-    console.log('Users.ts DATA', users)
     return { user }
 }
 
-export const findUser = userEmail => {
-    const user = users.find(user => user.email === userEmail)
-    console.log(`Users in findUser:${users}`, `User in findUser:${user}`)
-    return user
+export const findUserByEmail = userEmail => {
+    return global[users].find(user => user.email === userEmail)
+}
+
+export const filterUserById = userId => {
+    return global[users].filter(user => user.id === userId)
 }

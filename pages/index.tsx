@@ -5,7 +5,6 @@ const LoginForm = () => {
         <>
             <MainForm />
 
-            {/* I had to write it that way, as I don't need 100vh on the other pages :( */}
             <style global jsx>{`
                 body,
                 #__next {
