@@ -1,14 +1,4 @@
-interface IEmailInputProps {
-    onChangeEmail: Function
-    emailValue: string
-    isError?: boolean
-}
-
-const EmailInput = ({
-    onChangeEmail,
-    emailValue,
-    isError,
-}: IEmailInputProps) => {
+const EmailInput = ({ onChangeEmail, emailValue, isError = null }) => {
     return (
         <>
             <input

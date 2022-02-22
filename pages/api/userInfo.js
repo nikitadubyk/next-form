@@ -1,10 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { getLoginSession } from '../../lib/auth'
 
-export default async function userInfo(
-    req: NextApiRequest,
-    res: NextApiResponse
-) {
+export default async function userInfo(req, res) {
     try {
         const session = await getLoginSession(req)
         res.status(200).json({

@@ -1,16 +1,6 @@
 import { useState } from 'react'
 
-interface IPasswordInputProps {
-    onChangePassword: Function
-    passwordValue: string
-    isError?: boolean
-}
-
-const PasswordInput = ({
-    onChangePassword,
-    passwordValue,
-    isError,
-}: IPasswordInputProps) => {
+const PasswordInput = ({ onChangePassword, passwordValue, isError }) => {
     const [showPassword, setShowPassword] = useState(false)
 
     return (

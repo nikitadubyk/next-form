@@ -5,9 +5,9 @@ const useInputsValues = () => {
     const [passwordValue, setPasswordValue] = useState('')
     const [userName, setUserName] = useState('')
 
-    const changeEmailValue = (value: string) => setEmailValue(value)
-    const changePasswordValue = (value: string) => setPasswordValue(value)
-    const changeUserName = (value: string) => setUserName(value)
+    const changeEmailValue = value => setEmailValue(value)
+    const changePasswordValue = value => setPasswordValue(value)
+    const changeUserName = value => setUserName(value)
 
     return {
         emailValue,

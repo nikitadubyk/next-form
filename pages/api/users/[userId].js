@@ -1,8 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { filterUserById } from '../data/users'
 const bcrypt = require('bcryptjs')
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(req, res) {
     if (req.method === 'PATCH') {
         const { userId } = req.query
         const data = req.body

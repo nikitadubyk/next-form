@@ -1,14 +1,6 @@
 import React from 'react'
 
-interface IUserNameInputProps {
-    onChangeUserName: Function
-    userNameValue: string
-}
-
-const UserNameInput = ({
-    onChangeUserName,
-    userNameValue,
-}: IUserNameInputProps) => {
+const UserNameInput = ({ onChangeUserName, userNameValue }) => {
     return (
         <>
             <input

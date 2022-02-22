@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import Logo from '../login-form/Logo'
-import Button from '../login-form/Button'
+import Button from '../components/Button'
+import Logo from '../components/Logo'
 import { useEffect, useState } from 'react'
-import { logout } from '../../lib/auth'
+import { logout } from '../lib/auth'
 import Router from 'next/router'
 
-const Dashboard = () => {
+const Dashboad = () => {
     const [user, setUser] = useState({
         userName: '',
         email: '',
@@ -46,4 +46,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default Dashboad

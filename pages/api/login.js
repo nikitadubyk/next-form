@@ -1,12 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { findUserByEmail } from './data/users'
 import { setLoginSession } from '../../lib/auth'
 const bcrypt = require('bcryptjs')
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse
-) {
+export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { password, email } = req.body
         const user = findUserByEmail(email)
